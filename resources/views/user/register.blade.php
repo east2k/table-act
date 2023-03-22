@@ -1,5 +1,4 @@
 @include('partials.header')
-<x-nav />
 <div class="card text-black" style="border-radius: 25px;">
   <div class="card-body p-md-5">
     <div class="row justify-content-center">
@@ -22,6 +21,9 @@
             <div class="form-outline flex-fill mb-0">
               <label class="form-label" for="email">Email</label>
               <input type="email" name="email" class="form-control" />
+              @error("email")
+              <p>Email already exists.</p>
+              @enderror
             </div>
           </div>
 
