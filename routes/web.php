@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
+// Customer ----------------------------------
 
 Route::get('/', [CustomerController::class, 'index']);
 
@@ -38,3 +40,18 @@ Route::post("/saveCustomer", [CustomerController::class, "saveCustomer"])->middl
 // Edit User
 Route::get("/edit/{id}", [CustomerController::class, "edit"])->middleware('auth');
 Route::post("/updateCustomer", [CustomerController::class, "updateCustomer"])->middleware('auth');
+
+// Products ----------------------------------
+
+Route::get('/products', [ProductController::class, 'index']);
+
+// Delete Product
+Route::get("/delete_product/{id}", [ProductController::class, 'delete'])->middleware('auth');
+
+// Add User Product
+Route::get("/addProduct", [ProductController::class, "addProduct"])->middleware('auth');
+Route::post("/saveProduct", [ProductController::class, "saveProduct"])->middleware('auth');
+
+// Edit User
+Route::get("/editProduct/{id}", [ProductController::class, "editProduct"])->middleware('auth');
+Route::post("/updateProduct", [ProductController::class, "updateCustomer"])->middleware('auth');
